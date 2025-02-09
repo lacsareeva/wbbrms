@@ -1,0 +1,22 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-DNX4OJMG.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/css/style.css": {
+    "file": "assets/style-BARbi1x7.css",
+    "src": "resources/css/style.css",
+    "isEntry": true
+  },
+  "resources/image/manila4-2.jpg": {
+    "file": "assets/manila4-2-2BOJ1Q4r.jpg",
+    "src": "resources/image/manila4-2.jpg"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-2wsu-GxM.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}
