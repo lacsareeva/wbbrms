@@ -15,8 +15,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite('resources/css/style.css')
-    @vite('resources/js/app.js')
+  
+      <link rel="stylesheet" href="{{ asset('style-ucEBqCfL.css') }}">
+      <script src="{{ asset('app-C8Kny_Q1.js') }}"></script>
 </head>
 
 <body class="font-sans text-gray-900 antialiased">
