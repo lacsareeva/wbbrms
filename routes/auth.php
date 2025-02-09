@@ -36,10 +36,10 @@ Route::prefix('resident')->group(function () {
         ->name('resident.send-otp');
 
     Route::post('/verify-otp', [PasswordResetLinkController::class, 'verifyOtp'])
-        ->name('resident.verify-otps');
+        ->name('resident.verify-otp');
 
     Route::get('/verify-otp', [PasswordResetLinkController::class, 'showVerifyOTPForm'])
-        ->name('resident.verify-otp');
+        ->name('resident.verify-otps');
 
     Route::get('/reset-password/{email}', [PasswordResetLinkController::class, 'showResetPasswordForm'])
         ->name('resident.password.reset');
