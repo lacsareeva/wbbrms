@@ -41,33 +41,33 @@ class LoginRequest extends FormRequest
     {
         // Ensure the request is not rate-limited
         $this->ensureIsNotRateLimited();
-    
+
         // Extract credentials from the request
         $credentials = $this->only('email', 'password');
         $remember = $this->boolean('remember');
-    
+
         // Attempt login
         if (!Auth::attempt($credentials, $remember)) {
             // Increment rate limiter on failed attempt
-            RateLimiter::hit($this->throttleKey());
-    
+            RateLimiter::hit($this->throttleKey(), 90); // Block for 60 seconds per failed attempt
+
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'), // Failed login message
             ]);
         }
-    
+
         $user = Auth::user();
-    
+
         // Check if the user is verified
         if ($user->verificationInfo === 'not verified') {
             // Log out the user immediately
             Auth::logout();
-    
+
             throw ValidationException::withMessages([
                 'email' => 'Your account is not verified. Please contact the administrator.',
             ]);
         }
-    
+
         // Clear rate limit if login is successful
         RateLimiter::clear($this->throttleKey());
     }
@@ -78,20 +78,23 @@ class LoginRequest extends FormRequest
      */
     public function ensureIsNotRateLimited(): void
     {
-        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 3)) {
             return;
         }
-
+        // Fire a Lockout event (optional)
         event(new Lockout($this));
 
+        // Get remaining cooldown time
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
+        // Throw validation exception with throttle message
         throw ValidationException::withMessages([
             'email' => trans('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),
             ]),
         ]);
+        
     }
 
     /**
