@@ -207,5 +207,5 @@
 
 </html>
 <script>
-    var defaultImageUrl = "{{ Vite::asset('image/default-image.png') }}";
+    var defaultImageUrl = "{{ asset('image/default-image.png') }}";
 </script>
