@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Barangay 216 E-Portal') }}</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('image/logo.ico') }}" sizes="16x16">
+    <link rel="icon" type="image/x-icon" href="{{ asset('image/logo.ico') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -15,8 +15,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite('resources/css/ResidentStyles/loginStyle.css')
-    @vite('resources/js/app.js')
+  
+    @vite([
+    'resources/css/style.css',
+    'resources/js/app.js'
+])
 </head>
 
 <body class="font-sans text-gray-900 antialiased">
@@ -24,13 +27,13 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <div class="container">
         <div class="logo">
-            <img src="{{ Vite::asset('image/logo.png') }}" alt="Barangay 216 Logo">
+            <img src="{{ asset('image/logo.png') }}" alt="Barangay 216 Logo">
         </div>
         <h1>BAGONG BARANGAY 216 E-PORTAL</h1>
 
-        <h3 class="text-center mb-3">Resident Login</h3>
+        <h3 class="text-center mb-3">Admin Login</h3>
         <div class="login-box">
-            <form method="POST" action="{{ route('resident.login') }}">
+            <form method="POST" action="{{ route('admin.login') }}">
                 @csrf
 
                 <!-- Email Address -->
@@ -83,17 +86,10 @@
                     <x-primary-button class="login-btn">
                         {{ __('Log in') }}
                     </x-primary-button>
-                    <p class="text"> or </p>
-                    <x-primary-button class="login-btn">
-                        @if (Route::has('resident.register'))
-                            <a class="register-btn" href="{{ route('resident.register') }}">
-                                {{ __('Register') }}
-                            </a>
-                        @endif
-                    </x-primary-button>
 
-                    @if (Route::has('resident.forgot-password'))
-                        <a class="forgot-password" href="{{ route('resident.forgot-password') }}">
+
+                    @if (Route::has('admin.forgot-password'))
+                        <a class="forgot-password" href="{{ route('admin.forgot-password') }}">
                             {{ __('Forgot your password?') }}
                         </a>
                     @endif
@@ -113,32 +109,7 @@
         });
     </script>
 @endif
-@if(session('error'))
-    <script>
-        Swal.fire({
-            icon: 'warning',
-            title: 'Slow down!',
-            text: '{{ session('error') }}',
-            confirmButtonText: 'OK'
-        });
-    </script>
-@endif
-
-@if (session('success'))
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        Swal.fire({
-            icon: 'success',
-            text: "{{ e(session('success')) }}",
-            timer: 3000,
-            showConfirmButton: false,
-
-        });
-    </script>
-@endif
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
