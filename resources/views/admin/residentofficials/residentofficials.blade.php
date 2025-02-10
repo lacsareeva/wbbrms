@@ -132,7 +132,7 @@
 
             <h1>Resident And Officials</h1>
            
-            @include('admin.residentofficials.ResidentAndofficials-Content')
+            @include('admin.residentofficials.ResidentAndOfficials-Content')
 
         </main>
         <!-- MAIN -->
