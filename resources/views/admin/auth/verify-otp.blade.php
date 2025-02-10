@@ -11,15 +11,15 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="{{ asset('logo.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('image/logo.ico') }}">
     <!-- Scripts -->
     @vite(['resources/css/index.css', 'resources/js/app.js'])
 </head>
 
 <body>
     <div class="container">
-        <div class="logo">
-            <img src="{{ Vite::asset('image/logo.png') }}" alt="Barangay 216 Logo">
+       <div class="logo">
+            <img src="{{ asset('image/logo.png') }}" alt="Barangay 216 Logo">
         </div>
         <div class="sub-container">
             <div class="mb-4 text-sm text-gray-600">
