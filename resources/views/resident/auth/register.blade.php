@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Barangay 216 E-Portal') }}</title>
 
     <!-- Fonts -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('logo.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('image/logo.ico') }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -161,9 +161,8 @@
                     
                     <div id="ImageDetailsContainer" style="margin-top:40px">
                         <div class="card-body media align-items-center">
-                            <img id="profilePictures" src="{{ asset('image/default-image.png') }}" alt="id Photo"
+                            <img id="profilePictures" src="{{ Vite::asset('image/default-image.png') }}" alt="id Photo"
                                 class="highlightable" />
-                               <div class="logo">
                             <div>
                                 <div class="btn-data">
                                     <label class="btn btn-outline-primary">

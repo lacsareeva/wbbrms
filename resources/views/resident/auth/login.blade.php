@@ -23,8 +23,8 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <div class="container">
-          <div class="logo">
-            <img src="{{ asset('image/logo.png') }}" alt="Barangay 216 Logo">
+        <div class="logo">
+            <img src="{{ Vite::asset('image/logo.png') }}" alt="Barangay 216 Logo">
         </div>
         <h1>BAGONG BARANGAY 216 E-PORTAL</h1>
 
