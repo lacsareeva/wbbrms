@@ -144,7 +144,7 @@
         <!-- MAIN -->
         <main>
 
-            @include('admin.admin-dashboard.admin-content')
+            @include('admin.admin-dashboard.admin-Content')
 
         </main>
         <!-- MAIN -->
