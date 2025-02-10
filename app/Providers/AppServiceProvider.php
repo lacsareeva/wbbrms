@@ -23,5 +23,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Route::aliasMiddleware('check.user.role', CheckUserRole::class);
+        if (config('app.env') === 'production') {
+        URL::forceScheme('https'); // Forces HTTPS in production
+       }
     }
 }
