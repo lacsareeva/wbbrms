@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="{{ asset('logo.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('image/logo.ico') }}">
     <!-- Scripts -->
     @vite(['resources/css/DashboardStyle.css'])
     @vite(['resources/js/DBscript.js'])
@@ -25,7 +25,7 @@
     <section id="sidebar">
         <a href="{{ route('admin.dashboard') }}" class="brand">
             <div class="logo">
-                <img id="imglogo" src="{{ Vite::asset('image/logo.png') }}" alt="Barangay 216 Logo"
+                <img id="imglogo" src="{{ asset('image/logo.png') }}" alt="Barangay 216 Logo"
                     style="width: 300px; height: 250px; margin-top: 165px; margin-left: 8px;">
             </div>
 
