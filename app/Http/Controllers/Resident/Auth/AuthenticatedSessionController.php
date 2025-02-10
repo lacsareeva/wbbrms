@@ -27,25 +27,19 @@ class AuthenticatedSessionController extends Controller
     {
 
         try {
-            // Attempt to authenticate
             $request->authenticate();
 
-            // Flash success message
             session()->flash('success', 'Login successful!');
-
-            // Redirect to intended URL or dashboard
             return redirect()->intended(route('resident.dashboard'));
         } catch (ValidationException $e) {
-            // Handle validation exception
             if ($e->getMessage() === 'Your account is not verified. Please contact the administrator.') {
                 return back()->withErrors(['email' => 'Your account is not verified. Please wait for the admin to verify.'])->withInput();
             }
-
-            // For other login errors
-            return back()->withErrors(['email' => 'Invalid login credentials.'])->withInput();
+            return back()->withErrors($e->errors());
+        } catch (\Exception $e) {
+            return back()->withErrors(['email' => 'An unexpected error occurred.']);
         }
     }
-
     /**
      * Destroy an authenticated session.
      */
