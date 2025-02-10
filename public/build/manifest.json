@@ -8,7 +8,7 @@
     "name": "sweetalert2.esm.all"
   },
   "resources/css/AnnouncmentStyle.css": {
-    "file": "assets/AnnouncmentStyle-BvCkfrSC.css",
+    "file": "assets/AnnouncmentStyle-Cczwf5IX.css",
     "src": "resources/css/AnnouncmentStyle.css",
     "isEntry": true
   },
@@ -43,7 +43,7 @@
     "isEntry": true
   },
   "resources/css/ResidentStyles/registerStyle.css": {
-    "file": "assets/registerStyle-CMvKnq6Q.css",
+    "file": "assets/registerStyleResident-CMvKnq6Q.css",
     "src": "resources/css/ResidentStyles/registerStyle.css",
     "isEntry": true
   },
@@ -52,18 +52,13 @@
     "src": "resources/css/account.css",
     "isEntry": true
   },
-  "resources/css/app.css": {
-    "file": "assets/app-G88nlWaR.css",
-    "src": "resources/css/app.css",
-    "isEntry": true
-  },
   "resources/css/blotterStyles.css": {
-    "file": "assets/blotterStyles-D8QRQd5k.css",
+    "file": "assets/blotterStyles-CHaBNxd1.css",
     "src": "resources/css/blotterStyles.css",
     "isEntry": true
   },
   "resources/css/borrowedStyle.css": {
-    "file": "assets/borrowedStyle-DyRxEJ4V.css",
+    "file": "assets/borrowedStyle-DCMobkYO.css",
     "src": "resources/css/borrowedStyle.css",
     "isEntry": true
   },
@@ -87,7 +82,7 @@
     "isEntry": true
   },
   "resources/css/recordStyles.css": {
-    "file": "assets/recordStyles-CJ53YsBs.css",
+    "file": "assets/recordStyles-CuvFzb09.css",
     "src": "resources/css/recordStyles.css",
     "isEntry": true
   },
@@ -97,7 +92,7 @@
     "isEntry": true
   },
   "resources/css/reportStyles.css": {
-    "file": "assets/reportStyles-DnYbiPEm.css",
+    "file": "assets/reportStyles-Bek-EOwF.css",
     "src": "resources/css/reportStyles.css",
     "isEntry": true
   },
@@ -120,8 +115,8 @@
     "src": "resources/image/manila4-2.jpg"
   },
   "resources/js/Announcement.js": {
-    "file": "assets/Announcement-DixdtfY9.js",
-    "name": "Announcement",
+    "file": "assets/AnnouncementJS-DixdtfY9.js",
+    "name": "AnnouncementJS",
     "src": "resources/js/Announcement.js",
     "isEntry": true,
     "imports": [
@@ -129,8 +124,8 @@
     ]
   },
   "resources/js/Blotter.js": {
-    "file": "assets/Blotter-DYCx_sD4.js",
-    "name": "Blotter",
+    "file": "assets/BlotterJS-MsDc583W.js",
+    "name": "BlotterJS",
     "src": "resources/js/Blotter.js",
     "isEntry": true
   },
@@ -157,13 +152,13 @@
     "isEntry": true
   },
   "resources/js/ResidentScripts/blotterScripts.js": {
-    "file": "assets/blotterScripts-Cb8F9CLo.js",
+    "file": "assets/blotterScripts-CuA0PpXv.js",
     "name": "blotterScripts",
     "src": "resources/js/ResidentScripts/blotterScripts.js",
     "isEntry": true
   },
   "resources/js/ResidentScripts/borrowedScripts.js": {
-    "file": "assets/borrowedScripts-DFzoHQ9T.js",
+    "file": "assets/borrowedScripts-1gv62rep.js",
     "name": "borrowedScripts",
     "src": "resources/js/ResidentScripts/borrowedScripts.js",
     "isEntry": true
@@ -201,14 +196,14 @@
     ]
   },
   "resources/js/account.js": {
-    "file": "assets/account-BlLSsrNz.js",
-    "name": "account",
+    "file": "assets/accountJS-BlLSsrNz.js",
+    "name": "accountJS",
     "src": "resources/js/account.js",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-C8Kny_Q1.js",
-    "name": "app",
+    "file": "assets/main-C8Kny_Q1.js",
+    "name": "main",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
@@ -217,26 +212,26 @@
     ]
   },
   "resources/js/borrowed.js": {
-    "file": "assets/borrowed-zoHC15jV.js",
-    "name": "borrowed",
+    "file": "assets/borrowedJS-zoHC15jV.js",
+    "name": "borrowedJS",
     "src": "resources/js/borrowed.js",
     "isEntry": true
   },
   "resources/js/profile.js": {
-    "file": "assets/profile-pFotbJLf.js",
-    "name": "profile",
+    "file": "assets/profileJS-pFotbJLf.js",
+    "name": "profileJS",
     "src": "resources/js/profile.js",
     "isEntry": true
   },
   "resources/js/records.js": {
-    "file": "assets/records-DI_A6zis.js",
+    "file": "assets/records-iGS7ZnOn.js",
     "name": "records",
     "src": "resources/js/records.js",
     "isEntry": true
   },
   "resources/js/report.js": {
-    "file": "assets/report-Dofcx5OZ.js",
-    "name": "report",
+    "file": "assets/reportJS-yO7I-nH-.js",
+    "name": "reportJS",
     "src": "resources/js/report.js",
     "isEntry": true,
     "imports": [
