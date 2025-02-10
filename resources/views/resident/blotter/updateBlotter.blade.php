@@ -19,7 +19,7 @@
             <div class="form-section">
                 <div class="form-sections1">
                     <label for="date-time">Date and Time</label><br>
-                    <input type="text" id="update_date_time" name="datetimes">
+                    <input type="datetime-local" id="update_date_time" name="datetimes">
                 </div>
                 <div class="form-sections2">
                     <label for="complainant-name">Name of Complainant</label><br>
