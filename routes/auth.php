@@ -38,8 +38,8 @@ Route::prefix('resident')->group(function () {
     Route::post('/verify-otp', [PasswordResetLinkController::class, 'verifyOtp'])
         ->name('resident.verify-otp');
 
-    Route::get('/verify-otps', [PasswordResetLinkController::class, 'showVerifyOTPForm'])
-        ->name('resident.verify-otps');
+    Route::get('/verify-otp', [PasswordResetLinkController::class, 'showVerifyOTPForm'])
+        ->name('resident.verify-otp');
 
     Route::get('/reset-password/{email}', [PasswordResetLinkController::class, 'showResetPasswordForm'])
         ->name('resident.password.reset');
