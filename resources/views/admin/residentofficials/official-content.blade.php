@@ -7,8 +7,7 @@
     <div class="officials-container">
         @forelse($officialsinfo as $officialsinfos)
             <div class="official-card">
-                <img src="{{ asset('storage/' . $officialsinfos->officialsimage) }}" alt="{{ $officialsinfos->fullname }}"
-                    class="official-image">
+               <img src="{{ Storage::url($officialsinfos->officialsimage) }}" alt="Official's Image" class="official-image">
                 <p class="position">
                     <input style="color:#16a085" type="text" name="position" value="{{ $officialsinfos->position }}"
                         readonly><br>
