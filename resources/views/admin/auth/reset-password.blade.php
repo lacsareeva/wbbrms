@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="{{ asset('logo.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('image/logo.ico') }}">
     
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -21,8 +21,8 @@
 
 <body>
     <div class="container">
-        <div class="logo">
-            <img src="{{ Vite::asset('image/logo.png') }}" alt="Barangay 216 Logo">
+         <div class="logo">
+            <img src="{{ asset('image/logo.png') }}" alt="Barangay 216 Logo">
         </div>
         <div class="sub-container">
             <h4 style="font-size:17px">Email verified. <br> Create new password</h4>
