@@ -161,8 +161,9 @@
                     
                     <div id="ImageDetailsContainer" style="margin-top:40px">
                         <div class="card-body media align-items-center">
-                            <img id="profilePictures" src="{{ Vite::asset('image/default-image.png') }}" alt="id Photo"
+                            <img id="profilePictures" src="{{ asset('image/default-image.png') }}" alt="id Photo"
                                 class="highlightable" />
+                               <div class="logo">
                             <div>
                                 <div class="btn-data">
                                     <label class="btn btn-outline-primary">
