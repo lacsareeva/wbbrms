@@ -59,7 +59,7 @@ class PasswordResetLinkController extends Controller
     }
     public function showVerifyOTPForm()
     {
-        return view('resident.auth.verify-otps');
+        return view('resident.auth.verify-otp');
     }
 
     // Verify OTP
