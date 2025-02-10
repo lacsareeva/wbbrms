@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
-use App\Models\AdminArchiveFile\userArchiveAccounts;
+use App\Models\AdminArchiveFile\UserArchiveAccounts;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -27,11 +27,11 @@ class BarangayOfficialsController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        $usersRejected = userArchiveAccounts::where('verificationInfo', 'rejected')
+        $usersRejected = UserArchiveAccounts::where('verificationInfo', 'rejected')
             ->orderBy('id', 'desc')
             ->get();
 
-        $usersRemove = userArchiveAccounts::where('verificationInfo', 'removed')
+        $usersRemove = UserArchiveAccounts::where('verificationInfo', 'removed')
             ->orderBy('id', 'desc')
             ->get();
 
