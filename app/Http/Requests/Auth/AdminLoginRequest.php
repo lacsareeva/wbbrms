@@ -7,6 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
 
 class AdminLoginRequest extends FormRequest
 {
@@ -36,20 +37,22 @@ class AdminLoginRequest extends FormRequest
      */
     public function authenticate(): void
     {
+        // Ensure the request is not rate-limited
         $this->ensureIsNotRateLimited();
 
-        // Attempt authentication with the 'admin' guard
-        if (!auth()->guard('admin')->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
+        // Attempt authentication using the 'admin' guard
+        if (!Auth::guard('admin')->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+            // If login fails, increase the attempt count
+            RateLimiter::hit($this->throttleKey(), 90); // Block for 60 seconds per failed attempt
 
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
             ]);
         }
 
+        // If authentication is successful, clear the rate limiter
         RateLimiter::clear($this->throttleKey());
     }
-
     /**
      * Ensure the login request is not rate limited.
      *
@@ -57,14 +60,17 @@ class AdminLoginRequest extends FormRequest
      */
     public function ensureIsNotRateLimited(): void
     {
-        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 3)) {
             return;
         }
 
+        // Fire a Lockout event (optional)
         event(new Lockout($this));
 
+        // Get remaining cooldown time
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
+        // Throw validation exception with throttle message
         throw ValidationException::withMessages([
             'email' => trans('auth.throttle', [
                 'seconds' => $seconds,
