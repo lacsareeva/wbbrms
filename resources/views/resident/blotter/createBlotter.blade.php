@@ -18,8 +18,7 @@
             <div class="form-section">
                 <div class="form-sections1">
                     <label for="date-time">Date and Time</label><br>
-                    <input type="text" id="date-time" name="datetimes" placeholder="date and time when it happen"
-                        required>
+                    <input type="datetime-local" id="date-time" name="datetimes" required>
                 </div>
                 <div class="form-sections2">
                     <label for="complainant-name">Name of Complainant</label><br>
