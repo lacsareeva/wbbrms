@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Barangay 216 E-Portal') }}</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('logo.ico') }}" sizes="16x16">
+    <link rel="icon" type="image/x-icon" href="{{ asset('image/logo.ico') }}" sizes="16x16">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -23,8 +23,8 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <div class="container">
-        <div class="logo">
-            <img src="{{ Vite::asset('image/logo.png') }}" alt="Barangay 216 Logo">
+          <div class="logo">
+            <img src="{{ asset('image/logo.png') }}" alt="Barangay 216 Logo">
         </div>
         <h1>BAGONG BARANGAY 216 E-PORTAL</h1>
 
