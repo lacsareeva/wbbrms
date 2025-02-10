@@ -16,8 +16,10 @@
 
     <!-- Scripts -->
   
-    @vite('resources/css/style.css')
-    @vite('resources/js/app.js')
+    @vite([
+    'resources/css/style.css',
+    'resources/js/app.js'
+])
 </head>
 
 <body class="font-sans text-gray-900 antialiased">
