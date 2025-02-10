@@ -22,7 +22,7 @@
 <body>
     <div class="container">
         <div class="logo">
-            <img src="{{ Vite::asset('image/logo.png') }}" alt="Barangay 216 Logo">
+            <img src="{{ asset('image/logo.png') }}" alt="Barangay 216 Logo">
         </div>
         <div class="sub-container">
             <h4 style="font-size:17px">Email verified. <br> Create new password</h4>
