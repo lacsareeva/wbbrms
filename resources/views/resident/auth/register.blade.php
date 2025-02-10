@@ -208,4 +208,5 @@
 </html>
 <script>
     var defaultImageUrl = "{{ asset('image/default-image.png') }}";
+    document.getElementById("profilePicture").src = defaultImageUrl;
 </script>
