@@ -23,7 +23,7 @@
     <div class="container">
         <div>
             <div class="logo">
-                <img src="{{ Vite::asset('image/logo.png') }}" alt="Barangay 216 Logo">
+                <img src="{{ asset('image/logo.png') }}" alt="Barangay 216 Logo">
             </div>
         </div>
         <div class="sub-container">
