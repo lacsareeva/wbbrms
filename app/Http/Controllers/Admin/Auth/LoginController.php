@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -22,19 +23,20 @@ class LoginController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(AdminLoginRequest $request): RedirectResponse
+    public function store(AdminLoginRequest $request)
     {
-
         try {
             $request->authenticate();
-            session()->flash('success', 'Login successful!'); // Added success message
-            return redirect()->intended(route('admin.dashboard')); // Redirect to intended URL
+    
+            session()->flash('success', 'Login successful!');
+            return redirect()->intended(route('admin.dashboard'));
+        } catch (ValidationException $e) {
+            // Return the exact error message from validation (including throttle errors)
+            return back()->withErrors($e->errors());
         } catch (\Exception $e) {
-          return back()->withErrors(['email' => 'Invalid login credentials.']); //Improved error message
+            return back()->withErrors(['email' => 'An unexpected error occurred.']);
         }
     }
-
-
 
     /**
      * Destroy an authenticated session.
