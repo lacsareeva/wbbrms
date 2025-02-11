@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\DB;
 use App\Mail\VerifyEmail;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;  
 
 class BarangayOfficialsController extends Controller
 {
@@ -37,7 +36,7 @@ class BarangayOfficialsController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        return view('admin.residentofficials.residentofficials', compact('officialsinfo', 'users', 'usersVerified', 'usersRejected', 'usersRemove'));
+        return view('admin.residentofficials.residentofficials', compact('officialsinfo', 'users', 'usersVerified', 'usersRejected','usersRemove'));
     }
     public function update(Request $request, $id)
     {
@@ -47,24 +46,19 @@ class BarangayOfficialsController extends Controller
             'officialsimage' => 'nullable|image|mimes:jpeg,png,jpg,gif,jfif|max:2048', // Optional image validation
         ]);
     
-        // Find the existing official
         $official = OfficialsInfo::findOrFail($id);
-    
-        // Update the fields
         $official->fullname = $request->fullname;
         $official->position = $request->position;
     
-        // Handle image upload if a new image is provided
+        // Handle image upload
         if ($request->hasFile('officialsimage')) {
-            // Delete the old image if it exists
-            if ($official->officialsimage) {
+            // Delete old image if it exists
+            if ($official->officialsimage && Storage::disk('public')->exists($official->officialsimage)) {
                 Storage::disk('public')->delete($official->officialsimage);
             }
     
-            // Store the new image in the public storage
+            // Store the new image in 'storage/app/public/officials_images'
             $imagePath = $request->file('officialsimage')->store('officials_images', 'public');
-    
-            // Save the new image path in the database
             $official->officialsimage = $imagePath;
         }
     
@@ -175,7 +169,7 @@ class BarangayOfficialsController extends Controller
             $archivedAccounts->verification_id = $archiveRequest->verification_id;
             $archivedAccounts->verification_id_number = $archiveRequest->verification_id_number;
             $archivedAccounts->verification_id_image = $archiveRequest->verification_id_image;
-
+           
             $archivedAccounts->personIncharge = auth()->user()->email ?? 'System';
             $archivedAccounts->created_at = $archiveRequest->created_at;
             $archivedAccounts->updated_at = now();
@@ -185,7 +179,7 @@ class BarangayOfficialsController extends Controller
             $archiveRequest->delete();
 
             session()->flash('message', 'Residents successfully removed!');
-        } catch (\Exception $e) {
+        }  catch (\Exception $e) {
             session()->flash('error', 'An unexpected error occurred: ' . $e->getMessage());
         }
 
