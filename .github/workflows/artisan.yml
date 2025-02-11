@@ -23,6 +23,11 @@ jobs:
       - name: Run Storage Link
         run: php artisan storage:link
 
+      - name: Install Railway CLI
+        run: curl -fsSL https://railway.app/install.sh | sh
+
+      - name: Authenticate Railway
+        run: railway login --token "${{ secrets.RAILWAY_TOKEN }}"
+
       - name: Deploy to Railway
-        run: |
-          curl -X POST ${{ secrets.RAILWAY_DEPLOY_HOOK }}
+        run: railway up
