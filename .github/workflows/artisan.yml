@@ -3,7 +3,7 @@ name: Run Laravel Commands
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   run-artisan:
@@ -15,7 +15,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.2'
 
       - name: Install dependencies
         run: composer install --no-dev --optimize-autoloader
@@ -23,5 +23,6 @@ jobs:
       - name: Run Storage Link
         run: php artisan storage:link
 
-      - name: List storage contents
-        run: ls -l storage/app/public/officials_images
+      - name: Deploy to Railway
+        run: |
+          curl -X POST ${{ secrets.RAILWAY_DEPLOY_HOOK }}

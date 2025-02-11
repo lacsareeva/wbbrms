@@ -39,7 +39,6 @@ class BarangayOfficialsController extends Controller
 
         return view('admin.residentofficials.residentofficials', compact('officialsinfo', 'users', 'usersVerified', 'usersRejected', 'usersRemove'));
     }
-
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -48,35 +47,32 @@ class BarangayOfficialsController extends Controller
             'officialsimage' => 'nullable|image|mimes:jpeg,png,jpg,gif,jfif|max:2048', // Optional image validation
         ]);
     
+        // Find the existing official
         $official = OfficialsInfo::findOrFail($id);
     
         // Update the fields
         $official->fullname = $request->fullname;
         $official->position = $request->position;
     
-        // Handle image upload if provided
+        // Handle image upload if a new image is provided
         if ($request->hasFile('officialsimage')) {
-            $image = $request->file('officialsimage');
-            $imageName = time() . '.' . $image->getClientOriginalExtension(); // Generate a unique name
-    
-            $path = base_path('public/officials_images'); // Define path
-    
-            // Ensure directory exists
-            if (!File::isDirectory($path)) {
-                File::makeDirectory($path, 0777, true, true);
+            // Delete the old image if it exists
+            if ($official->officialsimage) {
+                Storage::disk('public')->delete($official->officialsimage);
             }
     
-            // Move the image to the correct folder
-            $image->move($path, $imageName);
+            // Store the new image in the public storage
+            $imagePath = $request->file('officialsimage')->store('officials_images', 'public');
     
-            // Save the path in the database
-            $official->officialsimage = 'officials_images/' . $imageName;
+            // Save the new image path in the database
+            $official->officialsimage = $imagePath;
         }
     
         $official->save();
     
         return redirect()->back()->with('success', 'Official updated successfully.');
     }
+    
 
     public function sendVerifyEmail(Request $request, $email)
     {
