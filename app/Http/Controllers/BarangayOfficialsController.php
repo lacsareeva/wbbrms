@@ -13,6 +13,7 @@ use App\Mail\VerifyEmail;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class BarangayOfficialsController extends Controller
 {
@@ -46,31 +47,36 @@ class BarangayOfficialsController extends Controller
             'position' => 'required|string|max:255',
             'officialsimage' => 'nullable|image|mimes:jpeg,png,jpg,gif,jfif|max:2048', // Optional image validation
         ]);
-
+    
         $official = OfficialsInfo::findOrFail($id);
-
+    
+        // Update the fields
         $official->fullname = $request->fullname;
         $official->position = $request->position;
-
+    
+        // Handle image upload if provided
         if ($request->hasFile('officialsimage')) {
-            // Delete old image if it exists
-            if ($official->officialsimage && file_exists(public_path('officials_images/' . $official->officialsimage))) {
-                unlink(public_path('officials_images/' . $official->officialsimage));
-            }
-
-            // Store new image directly in public folder
             $image = $request->file('officialsimage');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('officials_images'), $imageName);
-
+            $imageName = time() . '.' . $image->getClientOriginalExtension(); // Generate a unique name
+    
+            $path = base_path('public/officials_images'); // Define path
+    
+            // Ensure directory exists
+            if (!File::isDirectory($path)) {
+                File::makeDirectory($path, 0777, true, true);
+            }
+    
+            // Move the image to the correct folder
+            $image->move($path, $imageName);
+    
+            // Save the path in the database
             $official->officialsimage = 'officials_images/' . $imageName;
         }
-
+    
         $official->save();
-
+    
         return redirect()->back()->with('success', 'Official updated successfully.');
     }
-
 
     public function sendVerifyEmail(Request $request, $email)
     {
