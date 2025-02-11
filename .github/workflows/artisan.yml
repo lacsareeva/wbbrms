@@ -1,27 +1,46 @@
 name: Run Laravel Commands
 
+<<<<<<< HEAD
 on:
   push:
     branches:
       - main
+=======
+on: [push]
+>>>>>>> d779fbb (Added GitHub Actions workflow for Laravel)
 
 jobs:
   run-artisan:
     runs-on: ubuntu-latest
     steps:
+<<<<<<< HEAD
       - name: Checkout repository
+=======
+      - name: Checkout Code
+>>>>>>> d779fbb (Added GitHub Actions workflow for Laravel)
         uses: actions/checkout@v3
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
+<<<<<<< HEAD
           php-version: '8.1'
 
       - name: Install dependencies
         run: composer install --no-dev --optimize-autoloader
+=======
+          php-version: 8.2
+
+      - name: Install Dependencies
+        run: composer install --no-dev --prefer-dist --optimize-autoloader
+>>>>>>> d779fbb (Added GitHub Actions workflow for Laravel)
 
       - name: Run Storage Link
         run: php artisan storage:link
 
       - name: List storage contents
+<<<<<<< HEAD
         run: ls -l storage/app/public/officials_images
+=======
+        run: ls -la storage/app/public
+>>>>>>> d779fbb (Added GitHub Actions workflow for Laravel)

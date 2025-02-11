@@ -161,7 +161,7 @@
                     
                     <div id="ImageDetailsContainer" style="margin-top:40px">
                         <div class="card-body media align-items-center">
-                            <img id="profilePictures" src="{{ asset('image/default-image.png') }}" alt="id Photo"
+                            <img id="profilePictures" src="{{ asset('image/default-Image.png') }}" alt="id Photo"
                                 class="highlightable" />
                             <div>
                                 <div class="btn-data">
@@ -207,6 +207,6 @@
 
 </html>
 <script>
-    var defaultImageUrl = "{{ asset('image/default-image.png') }}";
-    document.getElementById("profilePicture").src = defaultImageUrl;
+    var defaultImageUrl = "{{ asset('image/default-Image.png') }}";
+    document.getElementById("profilePictures").src = defaultImageUrl;
 </script>
